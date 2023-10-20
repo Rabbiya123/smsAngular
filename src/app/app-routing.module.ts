@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AgentSignupComponent } from './agent-signup/agent-signup.component';
 import { AgentLoginComponent } from './agent-login/agent-login.component';
 import { AgentHomeComponent } from './agent-home/agent-home.component';
+import { AgentChatComponent } from './agent-chat/agent-chat.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { Socket } from 'socket.io-client';
 const routes: Routes = [
   {
     path: 'agent-signup',
@@ -15,6 +18,14 @@ const routes: Routes = [
   {
     path: 'agent-home',
     component: AgentHomeComponent,
+  },
+  {
+    path: 'agent-chat',
+    component: AgentChatComponent,
+  },
+  {
+    path: 'user-dashboard',
+    component: UserDashboardComponent,
   },
   {
     path: '',

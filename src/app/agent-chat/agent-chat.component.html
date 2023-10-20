@@ -1,0 +1,22 @@
+<h2>Agent dashboard</h2>
+
+<div class="agent-chat-container">
+  <div *ngIf="!isLoggedIn; else chatView">
+    <app-agent-login></app-agent-login>
+  </div>
+  <ng-template #chatView>
+    <div class="messages">
+      <div *ngFor="let message of messages">
+        {{ message.text }}
+      </div>
+    </div>
+    <div class="input">
+      <input
+        [(ngModel)]="userMessage"
+        (keydown.enter)="sendMessage(userMessage)"
+        placeholder="Type your message..."
+      />
+      <button (click)="sendMessage(userMessage)">Send</button>
+    </div>
+  </ng-template>
+</div>

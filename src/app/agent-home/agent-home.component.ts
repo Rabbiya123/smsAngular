@@ -24,7 +24,7 @@ export class AgentHomeComponent {
   }
 
   startChat() {
-    this.router.navigate(['/chat']).then((nav) => {
+    this.router.navigate(['/agent-chat']).then((nav) => {
       if (nav) {
         console.log('Going to the ChatApps');
       }
