@@ -1,0 +1,20 @@
+<div class="navbar">
+  <div class="logo">
+    <h1>MALIX</h1>
+  </div>
+
+  <div *ngIf="Islogging; else notLoggedIn">
+    <div class="user-info">
+      <!-- <i class="fas fa-user-circle fa-2x"></i> -->
+      <h3 style="text-transform: capitalize">{{ loginuser }}</h3>
+      <button (click)="logout()" class="btn">Logout</button>
+    </div>
+  </div>
+
+  <ng-template #notLoggedIn>
+    <div class="agent-buttons" *ngIf="!Islogging">
+      <button routerLink="/agent-signup" class="btnagent">Agent Signup</button>
+      <button routerLink="/agent-login" class="btnagent">Agent Login</button>
+    </div>
+  </ng-template>
+</div>

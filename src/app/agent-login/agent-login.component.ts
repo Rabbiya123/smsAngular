@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { Component } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
@@ -20,7 +21,20 @@ export class AgentLoginComponent {
     private userDataService: UserdataserviceService
   ) {}
 
-  login() {
+  isEmailRequired() {
+    if (!this.c1.email) {
+      // alert('Email is required');
+      return true;
+    }
+    return false;
+  }
+  isPasswordRequired() {
+    if (!this.c1.password) {
+      return true;
+    }
+    return false;
+  }
+  login(form: any) {
     this.authService.login(this.c1).subscribe(
       (response: any) => {
         console.log('Login successful');

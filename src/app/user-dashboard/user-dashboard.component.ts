@@ -8,11 +8,13 @@ import { UserServiceService } from '../user-service.service';
 })
 export class UserDashboardComponent {
   userMessage = '';
+  mostRecentAgentMessage: string = '';
   messages: any[] = [
     {
       text: '',
     },
   ];
+
   showChatContainer: boolean = false;
   constructor(private userService: UserServiceService) {}
 
@@ -21,9 +23,8 @@ export class UserDashboardComponent {
   }
   ngOnInit(): void {
     this.userService.getMessages().subscribe((messages: string[]) => {
-      // The 'messages' parameter should be of type 'string[]'
-      console.log('Message from server:', messages);
-      this.messages.push(...messages);
+      console.log('Messages from server:', messages);
+      this.messages = messages;
     });
   }
 
@@ -33,6 +34,11 @@ export class UserDashboardComponent {
       'This is the message sent from the client side',
       this.userMessage
     );
+    this.messages.push({ text: this.userMessage, sender: 'user' });
     this.userMessage = '';
+  }
+
+  closeChatContainer() {
+    this.showChatContainer = false;
   }
 }

@@ -45,7 +45,11 @@ export class WebSocketService {
     return this.messages$.asObservable();
   }
 
-  sendAgentMessage(message: string) {
-    this.socket.emit('agentMessage', { type: 'agentMessage', text: message });
+  sendAgentMessage(message: string, name: any) {
+    this.socket.emit('agentMessage', {
+      type: 'agentMessage',
+      text: message,
+      agentName: name,
+    });
   }
 }

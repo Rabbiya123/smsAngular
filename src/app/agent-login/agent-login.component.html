@@ -32,7 +32,12 @@
                 </p>
               </div>
             </div>
-            <form action="#" class="signin-form" (ngSubmit)="login()">
+            <form
+              action="#"
+              #myForm="ngForm"
+              class="signin-form"
+              (ngSubmit)="login(myForm)"
+            >
               <div class="form-group mt-3">
                 <input
                   type="text"
@@ -40,12 +45,19 @@
                   [(ngModel)]="c1.email"
                   name="email"
                   autocomplete="off"
-                  required
+                  [required]="isEmailRequired()"
                 />
                 <label class="form-control-placeholder" for="username"
                   >Email</label
                 >
               </div>
+              <p
+                *ngIf="isEmailRequired()"
+                class="error-message"
+                style="color: red"
+              >
+                ** Email is required.
+              </p>
               <div class="form-group">
                 <input
                   id="password-field"
@@ -63,6 +75,13 @@
                   class="fa fa-fw fa-eye field-icon toggle-password"
                 ></span>
               </div>
+              <p
+                *ngIf="isPasswordRequired()"
+                class="error-message"
+                style="color: red"
+              >
+                ** Password is required.
+              </p>
               <div class="form-group">
                 <button
                   type="submit"

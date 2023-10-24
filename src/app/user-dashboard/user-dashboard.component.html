@@ -1,20 +1,53 @@
-<h2>EndUser Dashboard</h2>
+<div class="navbar">
+  <div class="logo">
+    <h1>MALIX</h1>
+  </div>
 
-<div class="container">
-  <button (click)="toggleChatContainer()">Let's Chat</button>
-  <div class="chat-container" *ngIf="showChatContainer">
-    <div class="messages">
-      <div *ngFor="let message of messages">
-        {{ message.text }}
-      </div>
+  <div>
+    <div class="user-info">
+      <h3 style="text-transform: capitalize">UserChat</h3>
+      <button class="btn">User</button>
     </div>
-    <div class="input">
-      <input
-        [(ngModel)]="userMessage"
-        (keydown.enter)="sendMessage()"
-        placeholder="Type your message..."
-      />
-      <button (click)="sendMessage()">Send</button>
+  </div>
+</div>
+<div class="header">
+  <div class="container">
+    <button
+      (click)="toggleChatContainer()"
+      class="header-btn"
+      *ngIf="!showChatContainer"
+    >
+      Let's Chat
+    </button>
+    <div class="chat-container" *ngIf="showChatContainer">
+      <div class="chat-header">
+        <h2>Chat Header</h2>
+        <button (click)="closeChatContainer()" class="close-button">
+          Close
+        </button>
+      </div>
+      <div class="messages">
+        <div *ngFor="let message of messages">
+          <div
+            [ngClass]="{
+              'user-message': message.sender === 'user',
+              'other-message': message.sender !== 'user'
+            }"
+          >
+            {{ message.type }}
+            {{ message.text }}
+          </div>
+        </div>
+      </div>
+
+      <div class="input">
+        <input
+          [(ngModel)]="userMessage"
+          (keydown.enter)="sendMessage()"
+          placeholder="Type your message..."
+        />
+        <button (click)="sendMessage()">Send</button>
+      </div>
     </div>
   </div>
 </div>

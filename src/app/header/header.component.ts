@@ -5,11 +5,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 
 @Component({
-  selector: 'app-agent-home',
-  templateUrl: './agent-home.component.html',
-  styleUrls: ['./agent-home.component.css'],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
 })
-export class AgentHomeComponent {
+export class HeaderComponent {
   userData: any;
   Islogging: boolean = false;
   loginuser: any;

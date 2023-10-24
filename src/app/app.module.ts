@@ -10,6 +10,7 @@ import { AgentLoginComponent } from './agent-login/agent-login.component';
 import { AgentHomeComponent } from './agent-home/agent-home.component';
 import { AgentChatComponent } from './agent-chat/agent-chat.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { HeaderComponent } from './header/header.component';
 import { Socket } from 'socket.io-client';
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { Socket } from 'socket.io-client';
     AgentHomeComponent,
     AgentChatComponent,
     UserDashboardComponent,
+    HeaderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

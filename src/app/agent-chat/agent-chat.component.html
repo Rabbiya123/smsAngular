@@ -1,22 +1,38 @@
-<h2>Agent dashboard</h2>
+<app-header></app-header>
 
-<div class="agent-chat-container">
-  <div *ngIf="!isLoggedIn; else chatView">
-    <app-agent-login></app-agent-login>
+<!-- Include user list on the left -->
+<div class="chat-container">
+  <div class="user-list">
+    <!-- User list items go here -->
+    <div class="user-item" *ngFor="let user of userlist">
+      {{ user.username }}
+    </div>
   </div>
-  <ng-template #chatView>
-    <div class="messages">
-      <div *ngFor="let message of messages">
-        {{ message.text }}
+
+  <div class="chat">
+    <div *ngIf="!isLoggedIn; else chatView">
+      <app-agent-login></app-agent-login>
+    </div>
+
+    <ng-template #chatView>
+      <div class="chat-about">
+        <h4 class="m-b-0">{{ selectedUser?.username }}</h4>
+        <!-- <small>Last seen: 2 hours ago</small> -->
       </div>
-    </div>
-    <div class="input">
-      <input
-        [(ngModel)]="userMessage"
-        (keydown.enter)="sendMessage(userMessage)"
-        placeholder="Type your message..."
-      />
-      <button (click)="sendMessage(userMessage)">Send</button>
-    </div>
-  </ng-template>
+      <div class="messages">
+        <div *ngFor="let message of messages">
+          {{ message.text }}
+        </div>
+      </div>
+      <div class="input">
+        <input
+          [(ngModel)]="agentMessage"
+          (keydown.enter)="sendMessage(agentMessage)"
+          placeholder="Type your message.."
+        />
+        <button (click)="sendMessage(agentMessage)">Send</button>
+        <!-- Pass agentMessage to the function -->
+      </div>
+    </ng-template>
+  </div>
 </div>

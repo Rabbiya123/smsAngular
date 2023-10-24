@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
@@ -43,21 +44,14 @@ export class AuthServiceService {
     return this.user;
   }
 
-  logout(): Observable<any> {
-    // Use this.getToken() to retrieve the token
-    const token = this.getToken();
-
-    if (!token) {
-      console.error('No token available for logout.');
-
-      return new Observable();
+  decodeToken(token: string | null): any {
+    if (token) {
+      try {
+        return jwt_decode(token);
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
     }
-
-    const headers = new HttpHeaders({
-      Authorization: token,
-    });
-
-    return this.http.get(`${this.baseUrl}/logout`, { headers });
   }
 
   getUsername(): string | undefined {
