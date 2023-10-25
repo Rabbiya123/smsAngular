@@ -29,12 +29,6 @@ export class HeaderComponent {
       this.Islogging = true;
       this.loginuser = decodedToken.username;
     }
-
-    // this.userData = this.userDataService.getUserData();
-    // if (this.userData) {
-    //   this.Islogging = true;
-    //   this.loginuser = this.userData.username;
-    // }
   }
 
   startChat() {
@@ -47,7 +41,6 @@ export class HeaderComponent {
   logout(): void {
     console.log('Logout successful');
     this.authService.clearToken();
-    // this.router.navigate(['/agent-login']);
     this.Islogging = false;
   }
 }

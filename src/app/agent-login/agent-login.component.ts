@@ -23,7 +23,6 @@ export class AgentLoginComponent {
 
   isEmailRequired() {
     if (!this.c1.email) {
-      // alert('Email is required');
       return true;
     }
     return false;
