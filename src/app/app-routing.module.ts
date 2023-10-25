@@ -6,6 +6,7 @@ import { AgentHomeComponent } from './agent-home/agent-home.component';
 import { AgentChatComponent } from './agent-chat/agent-chat.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './authguard.guard';
 import { Socket } from 'socket.io-client';
 const routes: Routes = [
   {
@@ -19,10 +20,12 @@ const routes: Routes = [
   {
     path: 'agent-home',
     component: AgentHomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'agent-chat',
     component: AgentChatComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'user-dashboard',

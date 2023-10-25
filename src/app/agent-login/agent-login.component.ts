@@ -2,7 +2,7 @@ import { FormBuilder } from '@angular/forms';
 import { Component } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
-import { UserdataserviceService } from '../userdataservice.service'; // Create a user data service
+import { UserdataserviceService } from '../userdataservice.service';
 
 @Component({
   selector: 'app-agent-login',

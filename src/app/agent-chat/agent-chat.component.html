@@ -21,7 +21,17 @@
       </div>
       <div class="messages">
         <div *ngFor="let message of messages">
-          {{ message.text }}
+          <div
+            [ngStyle]="{
+              'background-color':
+                message.sender === 'user'
+                  ? 'rgb(176, 201, 223)'
+                  : 'rgb(238, 238, 238)'
+            }"
+            class="message-bubble"
+          >
+            {{ message.text }}
+          </div>
         </div>
       </div>
       <div class="input">

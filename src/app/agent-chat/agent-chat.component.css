@@ -67,3 +67,10 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+.message-bubble {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  max-width: 30%;
+  word-wrap: break-word;
+}

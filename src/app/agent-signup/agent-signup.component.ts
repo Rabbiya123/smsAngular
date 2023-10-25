@@ -30,7 +30,29 @@ export class AgentSignupComponent {
 
   constructor(private http: HttpClient) {}
 
-  signup() {
+  isEmailRequired() {
+    if (!this.user.email) {
+      // alert('Email is required');
+      return true;
+    }
+    return false;
+  }
+
+  isUsernameRequired() {
+    if (!this.user.username) {
+      return true;
+    }
+    return false;
+  }
+
+  isPasswordRequired() {
+    if (this.user.password) {
+      return true;
+    }
+    return false;
+  }
+
+  signup(form: any) {
     this.submitted = true;
     this.errorMessage = '';
     this.http.post('http://localhost:3000/signup', this.user).subscribe(

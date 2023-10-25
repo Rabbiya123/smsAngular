@@ -57,7 +57,7 @@
                 <form
                   action="#"
                   class="signin-form"
-                  (ngSubmit)="signup()"
+                  (ngSubmit)="signup(signupForm)"
                   #signupForm="ngForm"
                   autocomplete="off"
                 >
@@ -74,14 +74,14 @@
                       >Username</label
                     >
                   </div>
-                  <div
-                    *ngIf="
-                      submitted &&
-                      signupForm.controls['username'].hasError('required')
-                    "
+                  <p
+                    *ngIf="isUsernameRequired()"
+                    class="error-message"
+                    style="color: red"
                   >
-                    <p class="error-message">** Username is required.</p>
-                  </div>
+                    ** Username is required.
+                  </p>
+
                   <div class="form-group mt-3">
                     <input
                       type="text"
@@ -98,6 +98,14 @@
                   <div *ngIf="errorMessage" class="error-message">
                     <p>** {{ errorMessage }}</p>
                   </div>
+
+                  <p
+                    *ngIf="isEmailRequired()"
+                    class="error-message"
+                    style="color: red"
+                  >
+                    ** Email is required.
+                  </p>
 
                   <div class="form-group">
                     <input
@@ -131,7 +139,13 @@
                       **Password must be at least 8 characters long.
                     </p>
                   </div>
-
+                  <p
+                    *ngIf="isPasswordRequired()"
+                    class="error-message"
+                    style="color: red"
+                  >
+                    ** Password is required.
+                  </p>
                   <div class="form-group">
                     <button
                       type="submit"

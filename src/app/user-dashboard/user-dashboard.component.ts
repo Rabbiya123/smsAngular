@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UserServiceService } from '../user-service.service';
-
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
@@ -8,10 +8,13 @@ import { UserServiceService } from '../user-service.service';
 })
 export class UserDashboardComponent {
   userMessage = '';
+  icon = faClose;
+
   mostRecentAgentMessage: string = '';
   messages: any[] = [
     {
       text: '',
+      agentName: '',
     },
   ];
 
